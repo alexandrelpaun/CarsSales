@@ -11,7 +11,7 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
-    Future.delayed(const Duration(seconds: 5), () {
+    Future.delayed(const Duration(seconds: 1), () {
       Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(
@@ -21,6 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
     });
 
     return Scaffold(
+      backgroundColor: Colors.grey,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -34,10 +35,10 @@ class _SplashScreenState extends State<SplashScreen> {
             'Samsareala.ro',
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: Colors.redAccent,
-              fontWeight: FontWeight.w300,
-              wordSpacing: 6,
-              fontSize: 40,
+              color: Colors.red,
+              fontWeight: FontWeight.w900,
+              letterSpacing: 3,
+              fontSize: 60,
             ),
           ),
           SizedBox(
