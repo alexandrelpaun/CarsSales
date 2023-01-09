@@ -1,4 +1,6 @@
 import 'dart:ui';
+import 'package:cars_sales/screens/login_screen.dart';
+import 'package:cars_sales/screens/register_screen.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -29,7 +31,7 @@ class _HomeState extends State<Home> {
               style: TextStyle(
                 color: Colors.red,
                 fontWeight: FontWeight.w400,
-                letterSpacing: 2,
+                letterSpacing: 1,
                 fontSize: 20,
               ),
             ),
@@ -58,7 +60,14 @@ class _HomeState extends State<Home> {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Register(),
+                  ),
+                  (route) => false);
+            },
             icon: Icon(
               Icons.person,
             ),

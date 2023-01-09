@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "899661387461",
+    "project_id": "cars-sales-fa0d3",
+    "storage_bucket": "cars-sales-fa0d3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:899661387461:android:d0f41104ab60db027802ac",
+        "android_client_info": {
+          "package_name": "com.example.cars_sales"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "899661387461-mgmv0hfu47k6ununlm6t5o1vcsgs30o8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWgEefeI84AsXSeO9CkkagzgrugyMQBMk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "899661387461-mgmv0hfu47k6ununlm6t5o1vcsgs30o8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
