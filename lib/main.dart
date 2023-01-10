@@ -18,9 +18,6 @@ class CarsSales extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Samsareala.ro',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
       home: SplashScreen(),
     );
   }

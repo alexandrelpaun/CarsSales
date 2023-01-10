@@ -21,6 +21,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 215, 219, 200),
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.all(15),
@@ -49,13 +50,12 @@ class _HomeState extends State<Home> {
         ),
       ),
       appBar: AppBar(
+        backgroundColor: Colors.grey,
         title: Text(
           'samsareala.ro',
           style: TextStyle(
-            color: Colors.red,
-            fontWeight: FontWeight.w500,
-            letterSpacing: 4,
-            fontSize: 30,
+            fontWeight: FontWeight.w200,
+            fontSize: 28,
           ),
         ),
         actions: [
@@ -64,7 +64,7 @@ class _HomeState extends State<Home> {
               Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => Register(),
+                    builder: (context) => Login(),
                   ),
                   (route) => false);
             },

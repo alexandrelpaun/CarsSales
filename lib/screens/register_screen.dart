@@ -32,7 +32,7 @@ class _RegisterState extends State<Register> {
       backgroundColor: Color.fromARGB(255, 215, 219, 200),
       appBar: AppBar(
         backgroundColor: Colors.grey,
-        title: Center(
+        title: const Center(
           child: Text('Register'),
         ),
       ),
@@ -48,7 +48,7 @@ class _RegisterState extends State<Register> {
                 textAlign: TextAlign.center,
                 controller: userController,
                 keyboardType: TextInputType.emailAddress,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.mail_outlined),
                   labelText: 'User@email.com',
                   hintText: 'User',
@@ -70,15 +70,18 @@ class _RegisterState extends State<Register> {
                 controller: passController,
                 keyboardType: TextInputType.emailAddress,
                 obscureText: true,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   prefix: Icon(Icons.password),
                   labelText: 'Password',
                   hintText: 'Password',
                   border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(80.0))),
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(80.0),
+                    ),
+                  ),
                 ),
                 validator: (String? value) {
-                  if (value == null || value!.isEmpty) {
+                  if (value == null || value.isEmpty) {
                     return ('Please set your password');
                   } else if (value != confPassController.text) {
                     return ('Both password should be the same!');
@@ -91,7 +94,7 @@ class _RegisterState extends State<Register> {
                 keyboardType: TextInputType.emailAddress,
                 obscureText: true,
                 textAlign: TextAlign.center,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   prefix: Icon(Icons.password),
                   labelText: ' Confirm Password',
                   hintText: 'Confirm Password',
@@ -99,7 +102,7 @@ class _RegisterState extends State<Register> {
                       borderRadius: BorderRadius.all(Radius.circular(80.0))),
                 ),
                 validator: (String? value) {
-                  if (value == null || value!.isEmpty) {
+                  if (value == null || value.isEmpty) {
                     return ('This field is required!');
                   } else if (value != passController.text) {
                     return ('Both password should be the same!');
@@ -121,7 +124,7 @@ class _RegisterState extends State<Register> {
                       Navigator.pushAndRemoveUntil(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => Login(),
+                            builder: (context) => const Login(),
                           ),
                           (route) => false);
                     } on FirebaseAuthException catch (e) {
@@ -142,7 +145,7 @@ class _RegisterState extends State<Register> {
                     }
                   }
                 },
-                child: Text('Register'),
+                child: Text('Register', style: TextStyle(color: Colors.grey)),
               ),
             ],
           ),

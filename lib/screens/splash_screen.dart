@@ -35,9 +35,9 @@ class _SplashScreenState extends State<SplashScreen> {
             'Samsareala.ro',
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: Colors.red,
+              color: Color.fromARGB(255, 75, 62, 61),
               fontWeight: FontWeight.w900,
-              letterSpacing: 3,
+              letterSpacing: 2,
               fontSize: 60,
             ),
           ),
