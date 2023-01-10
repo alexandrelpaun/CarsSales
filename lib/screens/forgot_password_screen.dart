@@ -38,7 +38,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('Please insert your e-mail address!'),
+              Text('Please insert your e-mail adrress!'),
               SizedBox(
                 height: 15.0,
               ),

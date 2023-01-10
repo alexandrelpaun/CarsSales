@@ -1,3 +1,4 @@
+import 'package:cars_sales/screens/contact_screen.dart';
 import 'package:cars_sales/screens/login_screen.dart';
 import 'package:cars_sales/screens/register_screen.dart';
 import 'package:cars_sales/screens/splash_screen.dart';

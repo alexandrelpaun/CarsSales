@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:cars_sales/screens/contact_screen.dart';
 import 'package:cars_sales/screens/login_screen.dart';
 import 'package:cars_sales/screens/register_screen.dart';
 import 'package:flutter/material.dart';
@@ -26,16 +27,16 @@ class _HomeState extends State<Home> {
         child: ListView(
           padding: EdgeInsets.all(15),
           children: [
-            // Text(
-            //   'samsareala.ro',
-            //   textAlign: TextAlign.center,
-            //   style: TextStyle(
-            //     color: Colors.red,
-            //     fontWeight: FontWeight.w400,
-            //     letterSpacing: 1,
-            //     fontSize: 20,
-            //   ),
-            // ),
+            Text(
+              'samsareala.ro',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.red,
+                fontWeight: FontWeight.w400,
+                letterSpacing: 1,
+                fontSize: 20,
+              ),
+            ),
             ListTile(
               leading: Icon(Icons.person),
               title: Text('Login'),
@@ -51,13 +52,6 @@ class _HomeState extends State<Home> {
       ),
       appBar: AppBar(
         backgroundColor: Colors.grey,
-        title: Text(
-          'samsareala.ro',
-          style: TextStyle(
-            fontWeight: FontWeight.w200,
-            fontSize: 28,
-          ),
-        ),
         actions: [
           TextButton.icon(
             onPressed: () {
@@ -68,20 +62,25 @@ class _HomeState extends State<Home> {
                   ),
                   (route) => false);
             },
-            icon: Icon(
-              Icons.person,
-            ),
-            label: Text('Login'),
+            icon: Icon(Icons.person, color: Colors.white),
+            label: Text('Login', style: TextStyle(color: Colors.white)),
           ),
           TextButton(
             onPressed: () => Navigator.pushAndRemoveUntil(
                 context,
                 MaterialPageRoute(builder: (context) => Register()),
                 (route) => false),
-            child: Text('Register'),
+            child: Text('Register', style: TextStyle(color: Colors.white)),
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Contact(),
+                ),
+              );
+            },
             icon: Icon(
               Icons.phone,
             ),
