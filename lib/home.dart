@@ -26,16 +26,16 @@ class _HomeState extends State<Home> {
         child: ListView(
           padding: EdgeInsets.all(15),
           children: [
-            Text(
-              'samsareala.ro',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.red,
-                fontWeight: FontWeight.w400,
-                letterSpacing: 1,
-                fontSize: 20,
-              ),
-            ),
+            // Text(
+            //   'samsareala.ro',
+            //   textAlign: TextAlign.center,
+            //   style: TextStyle(
+            //     color: Colors.red,
+            //     fontWeight: FontWeight.w400,
+            //     letterSpacing: 1,
+            //     fontSize: 20,
+            //   ),
+            // ),
             ListTile(
               leading: Icon(Icons.person),
               title: Text('Login'),
@@ -59,7 +59,7 @@ class _HomeState extends State<Home> {
           ),
         ),
         actions: [
-          IconButton(
+          TextButton.icon(
             onPressed: () {
               Navigator.pushAndRemoveUntil(
                   context,
@@ -71,6 +71,14 @@ class _HomeState extends State<Home> {
             icon: Icon(
               Icons.person,
             ),
+            label: Text('Login'),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (context) => Register()),
+                (route) => false),
+            child: Text('Register'),
           ),
           IconButton(
             onPressed: () {},

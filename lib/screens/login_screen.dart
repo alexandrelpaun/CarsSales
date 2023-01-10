@@ -1,8 +1,10 @@
+import 'package:cars_sales/home.dart';
 import 'package:cars_sales/screens/forgot_password_screen.dart';
 import 'package:cars_sales/screens/register_screen.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cars_sales/screens/forgot_password_screen.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -97,7 +99,7 @@ class _LoginState extends State<Login> {
                       Navigator.pushAndRemoveUntil(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const Login(),
+                            builder: (context) => const Home(),
                           ),
                           (route) => false);
                     } on FirebaseAuthException catch (e) {
@@ -124,7 +126,7 @@ class _LoginState extends State<Login> {
                 ),
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   TextButton(
                     onPressed: () => Navigator.pushAndRemoveUntil(
