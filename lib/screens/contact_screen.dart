@@ -1,5 +1,25 @@
+import 'package:cars_sales/home.dart';
+import 'package:cars_sales/models/model_contact.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+
+Future<http.Response> sendEmail(ContactModel mesaj) async {
+  final response = await http.post(
+      Uri.parse('https://api.sendgrid.com/v3/mail/send'),
+      headers: <String, String>{
+        'Content-Type': 'application/json',
+        //TODO Add key to gitignore
+
+        'Authorization': 'Bearer $Keys.SENDGRID_API_KEY'
+      },
+      body:
+          '{"personalizations": [{"to": [{"email": "${mesaj.email}"}]}],"from": {"name": "${mesaj.name}"},"subject": "Sending with SendGrid is Fun","content": [{"type": "text/plain", "value": "and easy to do anywhere, even with cURL"}]}');
+
+  print(response.body);
+
+  return (response);
+}
 
 class Contact extends StatefulWidget {
   const Contact({super.key});
@@ -13,6 +33,7 @@ class _ContactState extends State<Contact> {
   final TextEditingController userController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
   final TextEditingController msgController = TextEditingController();
+  Future<ContactModel>? _futureContactModel;
 
   void dispose() {
     userController.dispose();
@@ -109,10 +130,21 @@ class _ContactState extends State<Contact> {
                 },
               ),
               ElevatedButton(
-                onPressed: () {
+                onPressed: () async {
                   if (_formKey.currentState!.validate()) {
                     print(
                         '${userController.text}-${nameController.text}-${msgController.text}');
+
+                    ContactModel mesaj = new ContactModel(
+                        email: userController.text,
+                        msg: msgController.text,
+                        name: nameController.text);
+
+                    await sendEmail(mesaj);
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(builder: (context) => Home()),
+                        (route) => false);
                   }
                   return null;
                 },
