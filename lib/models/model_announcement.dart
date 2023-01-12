@@ -2,19 +2,13 @@ class AnnouncementModel {
   int? id;
   String? name;
   String? description;
-  String? image;
-  String? marks;
-  String? color;
-  String? price;
+  String? imageUrl;
 
   AnnouncementModel({
-    int? id,
-    String? name,
-    String? description,
-    String? image,
-    String? marks,
-    String? color,
-    String? price,
+    this.id,
+    this.name,
+    this.description,
+    this.imageUrl,
   });
 
   factory AnnouncementModel.fromJson(Map<String, dynamic> json) {
@@ -22,7 +16,7 @@ class AnnouncementModel {
       id: json['id'] as int,
       name: json['name'] as String,
       description: json['description'] as String,
-      image: json['images'][0]["src"] as String,
+      imageUrl: json['images'][0]["src"] as String,
     );
   }
 }

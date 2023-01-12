@@ -5,17 +5,17 @@ class CardWidget extends StatefulWidget {
   CardWidget(
       {this.id,
       this.index,
-      required this.title,
-      required this.description,
+      this.titleCars,
+      this.descriptionCars,
       this.price,
-      required this.image});
+      required this.imageCars});
 
   int? id;
   int? index;
-  String? title;
-  String? description;
+  String? titleCars;
+  String? descriptionCars;
   String? price;
-  Image? image;
+  Image? imageCars;
 
   @override
   State<CardWidget> createState() => _CardWidgetState();
@@ -26,9 +26,9 @@ class _CardWidgetState extends State<CardWidget> {
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
-        leading: widget.image,
-        title: Text('${widget.price} - ' ' - ${widget.title ?? ''}'),
-        subtitle: Text(widget.description ?? ''),
+        leading: widget.imageCars,
+        title: Text(widget.titleCars!),
+        subtitle: Text(widget.descriptionCars ?? ''),
         onTap: () {
           Navigator.pushAndRemoveUntil(
               context,

@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:cars_sales/models/announcements_cars.dart';
 import 'package:cars_sales/screens/contact_screen.dart';
 import 'package:cars_sales/screens/login_screen.dart';
 import 'package:cars_sales/screens/register_screen.dart';
@@ -15,7 +16,7 @@ class _HomeState extends State<Home> {
   int _selectedIndex = 0;
 
   static final List<Widget> _pages = <Widget>[
-    Text('Item1'),
+    AnnouncementsCars(),
     Text('Item2'),
   ];
 
