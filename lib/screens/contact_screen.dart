@@ -11,7 +11,7 @@ Future<http.Response> sendEmail(ContactModel mesaj) async {
         'Content-Type': 'application/json',
         //TODO Add key to gitignore
 
-        'Authorization': 'Bearer $Keys.SENDGRID_API_KEY'
+        // 'Authorization': 'Bearer $Keys.SENDGRID_API_KEY'
       },
       body:
           '{"personalizations": [{"to": [{"email": "${mesaj.email}"}]}],"from": {"name": "${mesaj.name}"},"subject": "Sending with SendGrid is Fun","content": [{"type": "text/plain", "value": "and easy to do anywhere, even with cURL"}]}');
