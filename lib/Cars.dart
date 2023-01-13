@@ -26,16 +26,16 @@ class _CarsState extends State<Cars> {
   Widget build(BuildContext context) {
     return Scaffold(
       // backgroundColor: Color.fromARGB(255, 215, 219, 200),
-      appBar: AppBar(
-        backgroundColor: Colors.grey,
-        centerTitle: true,
-        title: Text(
-          'Sales Cars',
-          style: TextStyle(
-            color: Colors.white,
-          ),
-        ),
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: Color.fromARGB(255, 138, 68, 68),
+      //   centerTitle: true,
+      //   title: Text(
+      //     'Sales Cars',
+      //     style: TextStyle(
+      //       color: Colors.white,
+      //     ),
+      //   ),
+      // ),
       body: ListView.builder(
           padding: EdgeInsets.all(8.0),
           itemCount: widget.announcement.length,
