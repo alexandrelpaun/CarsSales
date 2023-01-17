@@ -13,10 +13,13 @@ class AnnouncementModel {
 
   factory AnnouncementModel.fromJson(Map<String, dynamic> json) {
     return AnnouncementModel(
-      id: json['id'] as int,
-      name: json['name'] as String,
-      description: json['description'] as String,
-      imageUrl: json['images'][0]["src"] as String,
-    );
+        id: json['id'] as int,
+        name: json['name'] as String,
+        description: json['description'] as String,
+        imageUrl: json['images'] != null
+            ? ((json['images'] as List).isNotEmpty
+                ? json['images'][0]["src"]
+                : null)
+            : null);
   }
 }
