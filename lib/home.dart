@@ -1,9 +1,13 @@
 import 'dart:ui';
-import 'package:cars_sales/models/announcements_cars.dart';
+import 'package:cars_sales/announcements_cars.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cars_sales/screens/contact_screen.dart';
 import 'package:cars_sales/screens/login_screen.dart';
 import 'package:cars_sales/screens/register_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:email_validator/email_validator.dart';
+
+import 'screens/register_screen.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -14,6 +18,28 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int _selectedIndex = 0;
+
+  final _auth = FirebaseAuth.instance;
+  User? loggedInUser;
+
+  get newUser => null;
+
+  @override
+  void initState() {
+    super.initState();
+    getCurrentUser();
+  }
+
+  void getCurrentUser() async {
+    final newUser = await _auth.currentUser;
+    try {
+      if (newUser != null) {
+        loggedInUser = newUser;
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
 
   static final List<Widget> _pages = <Widget>[
     AnnouncementsCars(),
@@ -46,7 +72,14 @@ class _HomeState extends State<Home> {
             ListTile(
               leading: Icon(Icons.phone),
               title: Text('Contact us'),
-              onTap: (() {}),
+              onTap: (() {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Contact(),
+                  ),
+                );
+              }),
             )
           ],
         ),
@@ -55,7 +88,14 @@ class _HomeState extends State<Home> {
         backgroundColor: Colors.grey,
         actions: [
           TextButton.icon(
+            onPressed: () {},
+            icon: Icon(Icons.person, color: Colors.white),
+            label: Text('', style: TextStyle(color: Colors.white)),
+          ),
+          IconButton(
             onPressed: () {
+              _auth.signOut();
+
               Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(
@@ -63,28 +103,7 @@ class _HomeState extends State<Home> {
                   ),
                   (route) => false);
             },
-            icon: Icon(Icons.person, color: Colors.white),
-            label: Text('Login', style: TextStyle(color: Colors.white)),
-          ),
-          TextButton(
-            onPressed: () => Navigator.pushAndRemoveUntil(
-                context,
-                MaterialPageRoute(builder: (context) => Register()),
-                (route) => false),
-            child: Text('Register', style: TextStyle(color: Colors.white)),
-          ),
-          IconButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => Contact(),
-                ),
-              );
-            },
-            icon: Icon(
-              Icons.phone,
-            ),
+            icon: Icon(Icons.logout, color: Colors.white),
           ),
         ],
       ),
@@ -98,7 +117,7 @@ class _HomeState extends State<Home> {
             label: 'Cars',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.battery_charging_full),
+            icon: Icon(Icons.settings),
             label: 'Pieces',
           ),
         ],

@@ -3,6 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:email_validator/email_validator.dart';
 
+final TextEditingController userController = TextEditingController();
+
 class Register extends StatefulWidget {
   const Register({super.key});
 

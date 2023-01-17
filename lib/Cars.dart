@@ -8,7 +8,7 @@ class Cars extends StatefulWidget {
   State<Cars> createState() => _CarsState();
 
   List<AnnouncementModel> announcement = [];
-  Cars({required this.announcement}) {}
+  Cars({required this.announcement});
 }
 
 class _CarsState extends State<Cars> {
@@ -25,17 +25,6 @@ class _CarsState extends State<Cars> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Color.fromARGB(255, 215, 219, 200),
-      // appBar: AppBar(
-      //   backgroundColor: Color.fromARGB(255, 138, 68, 68),
-      //   centerTitle: true,
-      //   title: Text(
-      //     'Sales Cars',
-      //     style: TextStyle(
-      //       color: Colors.white,
-      //     ),
-      //   ),
-      // ),
       body: ListView.builder(
           padding: EdgeInsets.all(8.0),
           itemCount: widget.announcement.length,
@@ -48,7 +37,6 @@ class _CarsState extends State<Cars> {
               titleCars: widget.announcement[index].name ?? '',
               descriptionCars: _parseHtmlString(
                   widget.announcement[index].description ?? ''),
-              // price: widget.announcement[index].price,
               imageCars: widget.announcement[index].imageUrl != null
                   ? Image.network(
                       widget.announcement[index].imageUrl!,

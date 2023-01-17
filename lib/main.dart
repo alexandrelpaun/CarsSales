@@ -1,5 +1,6 @@
 import 'package:cars_sales/cars.dart';
-import 'package:cars_sales/models/announcements_cars.dart';
+import 'package:cars_sales/announcements_cars.dart';
+import 'package:cars_sales/home.dart';
 import 'package:cars_sales/screens/contact_screen.dart';
 import 'package:cars_sales/screens/login_screen.dart';
 import 'package:cars_sales/screens/register_screen.dart';
@@ -25,7 +26,7 @@ class CarsSales extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Samsareala.ro',
-      home: SplashScreen(),
+      home: Home(),
     );
   }
 }

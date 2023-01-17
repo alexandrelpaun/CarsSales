@@ -95,11 +95,12 @@ class _LoginState extends State<Login> {
                       final newUser = await _auth.signInWithEmailAndPassword(
                           email: userController.text,
                           password: passController.text);
+
                       print(newUser.user!.displayName);
                       Navigator.pushAndRemoveUntil(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const Home(),
+                            builder: (context) => Home(),
                           ),
                           (route) => false);
                     } on FirebaseAuthException catch (e) {

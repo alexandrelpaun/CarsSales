@@ -9,14 +9,13 @@ class CardWidget extends StatefulWidget {
       this.index,
       this.titleCars,
       this.descriptionCars,
-      this.price,
       required this.imageCars});
 
   int? id;
   int? index;
   String? titleCars;
   String? descriptionCars;
-  String? price;
+
   Image? imageCars;
 
   @override

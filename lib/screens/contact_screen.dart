@@ -71,7 +71,6 @@ class _ContactState extends State<Contact> {
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.mail_outlined),
                   labelText: 'Name',
-                  hintText: 'Name',
                   fillColor: Colors.white,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(30.0)),
@@ -91,8 +90,7 @@ class _ContactState extends State<Contact> {
                 keyboardType: TextInputType.emailAddress,
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.mail_outlined),
-                  labelText: 'e-mail',
-                  hintText: 'e-mail',
+                  labelText: 'Email',
                   fillColor: Colors.white,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(30.0)),
@@ -115,7 +113,6 @@ class _ContactState extends State<Contact> {
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.mail_outlined),
                   labelText: 'Message',
-                  hintText: 'Message',
                   fillColor: Colors.white,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(30.0)),

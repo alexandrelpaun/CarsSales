@@ -1,4 +1,5 @@
 import 'package:cars_sales/home.dart';
+import 'package:cars_sales/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -15,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
       Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(
-            builder: (context) => Home(),
+            builder: (context) => Login(),
           ),
           (route) => false);
     });

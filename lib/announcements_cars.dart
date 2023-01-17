@@ -11,7 +11,6 @@ Future<List<AnnouncementModel>> fetchAnnouncementModel() async {
   String pass = dotenv.get('password', fallback: '');
 
   String basicAuth = 'Basic ' + base64.encode(utf8.encode('$user:$pass'));
-  print(basicAuth);
 
   final response = await http.get(
       Uri.parse('https://www.samsareala.ro/wp-json/wc/v3/products'),
@@ -20,7 +19,7 @@ Future<List<AnnouncementModel>> fetchAnnouncementModel() async {
         'authorization': basicAuth,
       });
 
-  print(response.statusCode);
+  print(response.body);
 
   return parseAnnouncementModel(response.body);
 }
@@ -32,9 +31,14 @@ List<AnnouncementModel> parseAnnouncementModel(String responseBody) {
       .toList();
 }
 
-class AnnouncementsCars extends StatelessWidget {
-  AnnouncementsCars({super.key});
+class AnnouncementsCars extends StatefulWidget {
+  const AnnouncementsCars({super.key});
 
+  @override
+  State<AnnouncementsCars> createState() => _AnnouncementsCarsState();
+}
+
+class _AnnouncementsCarsState extends State<AnnouncementsCars> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,13 +46,14 @@ class AnnouncementsCars extends StatelessWidget {
         future: fetchAnnouncementModel(),
         builder: ((context, snapshot) {
           if (snapshot.hasError) {
+            print(snapshot.error.toString());
             return Center(
-              child: Text('An error'),
+              child: Text(snapshot.error!.toString()),
             );
           } else if (snapshot.hasData) {
             return Cars(announcement: snapshot.data!);
           } else {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           }
