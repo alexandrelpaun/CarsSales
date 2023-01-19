@@ -15,7 +15,6 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
   final TextEditingController userController = TextEditingController();
   final TextEditingController passController = TextEditingController();
   final _auth = FirebaseAuth.instance;
@@ -41,7 +40,7 @@ class _LoginState extends State<Login> {
           padding: const EdgeInsets.all(20.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               TextFormField(
                 textAlign: TextAlign.center,
@@ -96,7 +95,7 @@ class _LoginState extends State<Login> {
                           email: userController.text,
                           password: passController.text);
 
-                      print(newUser.user!.displayName);
+                      print(newUser.user!.email);
                       Navigator.pushAndRemoveUntil(
                           context,
                           MaterialPageRoute(

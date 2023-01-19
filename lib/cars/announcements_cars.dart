@@ -1,10 +1,11 @@
 import 'dart:convert';
-import 'package:cars_sales/cars.dart';
 import 'package:cars_sales/models/model_announcement.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+
+import 'cars.dart';
 
 // 1. Am convertit Stateless in StateFull ca sa pot schimba starea widgetului cu setState
 class AnnouncementsCars extends StatefulWidget {
@@ -27,11 +28,6 @@ class _AnnouncementsCarsState extends State<AnnouncementsCars> {
     super.initState();
   }
 
-  @override
-  State<AnnouncementsCars> createState() => _AnnouncementsCarsState();
-}
-
-class _AnnouncementsCarsState extends State<AnnouncementsCars> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

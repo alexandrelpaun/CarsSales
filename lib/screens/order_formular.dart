@@ -1,10 +1,10 @@
-import 'package:cars_sales/home.dart';
 import 'package:cars_sales/models/model_contact.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import '../cars/announcements_cars.dart';
 
-Future<http.Response> sendEmail(ContactModel mesaj) async {
+Future<http.Response> sendEmailOrder(ContactModel mesaj) async {
   final response = await http.post(
       Uri.parse('https://api.sendgrid.com/v3/mail/send'),
       headers: <String, String>{
@@ -21,14 +21,14 @@ Future<http.Response> sendEmail(ContactModel mesaj) async {
   return (response);
 }
 
-class Contact extends StatefulWidget {
-  const Contact({super.key});
+class OrderFormular extends StatefulWidget {
+  const OrderFormular({super.key});
 
   @override
-  State<Contact> createState() => _ContactState();
+  State<OrderFormular> createState() => _OrderFormularState();
 }
 
-class _ContactState extends State<Contact> {
+class _OrderFormularState extends State<OrderFormular> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController userController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
@@ -50,7 +50,7 @@ class _ContactState extends State<Contact> {
         backgroundColor: Colors.grey,
         centerTitle: true,
         title: Text(
-          'Contact',
+          'Order Formular',
           style: TextStyle(
             fontSize: 32,
             fontWeight: FontWeight.w300,
@@ -60,7 +60,7 @@ class _ContactState extends State<Contact> {
       body: Form(
         key: _formKey,
         child: Padding(
-          padding: const EdgeInsets.all(20.0),
+          padding: const EdgeInsets.all(15.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -107,7 +107,7 @@ class _ContactState extends State<Contact> {
               ),
               TextFormField(
                 minLines: 4,
-                maxLines: 10,
+                maxLines: 6,
                 textAlign: TextAlign.center,
                 controller: msgController,
                 keyboardType: TextInputType.emailAddress,
@@ -138,10 +138,11 @@ class _ContactState extends State<Contact> {
                         msg: msgController.text,
                         name: nameController.text);
 
-                    await sendEmail(mesaj);
+                    await sendEmailOrder(mesaj);
                     Navigator.pushAndRemoveUntil(
                         context,
-                        MaterialPageRoute(builder: (context) => Home()),
+                        MaterialPageRoute(
+                            builder: (context) => AnnouncementsCars()),
                         (route) => false);
                   }
                   return null;

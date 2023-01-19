@@ -2,6 +2,7 @@ import 'package:cars_sales/home.dart';
 import 'package:cars_sales/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../cars/individual_car.dart';
 
 class CardWidget extends StatefulWidget {
   CardWidget(
@@ -50,30 +51,38 @@ class _CardWidgetState extends State<CardWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: ListTile(
-        leading: widget.imageCars,
-        title: Text(widget.titleCars!),
-        subtitle: Text(widget.descriptionCars ?? ''),
-        trailing: IconButton(
-          onPressed: () {
-            setState(() {
-              liked = !liked;
-            });
+    return GestureDetector(
+      child: Card(
+        child: ListTile(
+          leading: widget.imageCars,
+          title: Text(widget.titleCars!),
+          subtitle: Text(widget.descriptionCars ?? ''),
+          trailing: IconButton(
+            onPressed: () {
+              setState(() {
+                liked = !liked;
+              });
 
-            _persistPreferences(liked);
-          },
-          icon: Icon(
-            liked ? Icons.favorite : Icons.favorite_border,
-            color: liked ? Colors.red : Colors.grey,
+              _persistPreferences(liked);
+            },
+            icon: Icon(
+              liked ? Icons.favorite : Icons.favorite_border,
+              color: liked ? Colors.red : Colors.grey,
+            ),
           ),
-        ),
-        onTap: () {
-          Navigator.pushAndRemoveUntil(
+          onTap: () {
+            Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => Home()),
-              (route) => false);
-        },
+              MaterialPageRoute(
+                builder: (context) => IndividualCar(
+                  imageCars: widget.imageCars,
+                  titleCars: widget.titleCars,
+                  descriptionCars: widget.descriptionCars,
+                ),
+              ),
+            );
+          },
+        ),
       ),
     );
   }

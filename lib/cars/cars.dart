@@ -8,6 +8,7 @@ class Cars extends StatefulWidget {
   State<Cars> createState() => _CarsState();
 
   List<AnnouncementModel> announcement = [];
+
   Cars({required this.announcement});
 }
 

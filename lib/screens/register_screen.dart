@@ -3,8 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:email_validator/email_validator.dart';
 
-final TextEditingController userController = TextEditingController();
-
 class Register extends StatefulWidget {
   const Register({super.key});
 
@@ -44,7 +42,7 @@ class _RegisterState extends State<Register> {
           padding: const EdgeInsets.all(20.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               TextFormField(
                 textAlign: TextAlign.center,
@@ -74,7 +72,6 @@ class _RegisterState extends State<Register> {
                 obscureText: true,
                 decoration: const InputDecoration(
                   prefix: Icon(Icons.password),
-                  labelText: 'Password',
                   hintText: 'Password',
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(
@@ -98,7 +95,6 @@ class _RegisterState extends State<Register> {
                 textAlign: TextAlign.center,
                 decoration: const InputDecoration(
                   prefix: Icon(Icons.password),
-                  labelText: ' Confirm Password',
                   hintText: 'Confirm Password',
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(80.0))),
