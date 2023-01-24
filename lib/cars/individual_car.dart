@@ -7,12 +7,14 @@ class IndividualCar extends StatelessWidget {
       this.id,
       this.imageCars,
       this.titleCars,
-      this.descriptionCars});
+      this.descriptionCars,
+      this.priceCars});
 
   Image? imageCars;
   String? titleCars;
   String? descriptionCars;
   int? id;
+  String? priceCars;
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +29,7 @@ class IndividualCar extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             imageCars!,
+            Text(priceCars ?? ''),
             Text(titleCars ?? ''),
             Text(descriptionCars ?? ''),
             const SizedBox(

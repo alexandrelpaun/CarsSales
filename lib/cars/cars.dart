@@ -34,8 +34,10 @@ class _CarsState extends State<Cars> {
 
             return CardWidget(
               index: index,
+              // categories: widget.announcement[30].categories ?? '',
               id: widget.announcement[index].id,
-              titleCars: widget.announcement[index].name ?? '',
+              priceCars: widget.announcement[index].price,
+              titleCars: (widget.announcement[index].name ?? ''),
               descriptionCars: _parseHtmlString(
                   widget.announcement[index].description ?? ''),
               imageCars: widget.announcement[index].imageUrl != null

@@ -1,14 +1,17 @@
 import 'package:cars_sales/home.dart';
 import 'package:cars_sales/screens/login_screen.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../cars/individual_car.dart';
 
 class CardWidget extends StatefulWidget {
   CardWidget(
-      {this.id,
+      {this.categories,
+      this.id,
       this.index,
       this.titleCars,
+      this.priceCars,
       this.descriptionCars,
       required this.imageCars});
 
@@ -16,6 +19,8 @@ class CardWidget extends StatefulWidget {
   int? index;
   String? titleCars;
   String? descriptionCars;
+  String? priceCars;
+  String? categories;
 
   Image? imageCars;
 
@@ -53,10 +58,14 @@ class _CardWidgetState extends State<CardWidget> {
   Widget build(BuildContext context) {
     return GestureDetector(
       child: Card(
+        elevation: 5,
         child: ListTile(
           leading: widget.imageCars,
-          title: Text(widget.titleCars!),
-          subtitle: Text(widget.descriptionCars ?? ''),
+          title: Text(
+            widget.priceCars ?? '',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+          subtitle: Text(widget.titleCars ?? ''),
           trailing: IconButton(
             onPressed: () {
               setState(() {

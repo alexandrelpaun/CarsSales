@@ -30,8 +30,8 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    var dropdownValueCars = null;
     var user = _auth.currentUser;
+
     return Scaffold(
       drawer: const AppDrawer(),
       appBar: AppBar(

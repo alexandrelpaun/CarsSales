@@ -3,12 +3,16 @@ class AnnouncementModel {
   String? name;
   String? description;
   String? imageUrl;
+  String? categories;
+  String? price;
 
   AnnouncementModel({
     this.id,
     this.name,
     this.description,
     this.imageUrl,
+    this.categories,
+    this.price,
   });
 
   factory AnnouncementModel.fromJson(Map<String, dynamic> json) {
@@ -22,6 +26,8 @@ class AnnouncementModel {
               ? json['images'][0]["src"]
               : null)
           : null,
+      price: json['price'] as String,
+      // categories: json['categories'][2]["cars"] as String,
     );
   }
 }
