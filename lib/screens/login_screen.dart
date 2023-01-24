@@ -8,6 +8,7 @@ import 'package:cars_sales/screens/forgot_password_screen.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
+  static String id = 'login';
 
   @override
   State<Login> createState() => _LoginState();

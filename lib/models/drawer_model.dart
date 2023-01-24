@@ -11,7 +11,7 @@ class DrawerTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: Icon(Icons.person),
+      leading: Icon(icon),
       title: Text(title),
       onTap: onTap,
     );

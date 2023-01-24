@@ -7,9 +7,7 @@ import 'package:cars_sales/screens/login_screen.dart';
 import 'package:cars_sales/screens/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:email_validator/email_validator.dart';
-import 'package:provider/provider.dart';
 import 'cars/announcements_cars.dart';
-import 'screens/drawer_scree.dart';
 import 'screens/register_screen.dart';
 
 class Home extends StatefulWidget {
@@ -33,6 +31,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     var dropdownValueCars = null;
+    var user = _auth.currentUser;
     return Scaffold(
       drawer: const AppDrawer(),
       appBar: AppBar(
@@ -41,7 +40,12 @@ class _HomeState extends State<Home> {
           TextButton.icon(
             onPressed: () {},
             icon: Icon(Icons.person, color: Colors.white),
-            label: Text('', style: TextStyle(color: Colors.white)),
+            label: Text(
+              '${user?.email}',
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
           ),
           IconButton(
             onPressed: () {
@@ -58,28 +62,28 @@ class _HomeState extends State<Home> {
           ),
         ],
       ),
-      body: Container(
-        child: context.watch<ChangePage>().currentScreen,
+      body: Center(
+        child: _pages.elementAt(_selectedIndex),
       ),
-      // bottomNavigationBar: BottomNavigationBar(
-      //   items: <BottomNavigationBarItem>[
-      //     BottomNavigationBarItem(
-      //       icon: Icon(Icons.car_rental),
-      //       label: 'Cars',
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: Icon(Icons.settings),
-      //       label: 'Pieces',
-      //     ),
-      //   ],
-      //   currentIndex: _selectedIndex,
-      //   selectedItemColor: Colors.grey,
-      //   onTap: (index) {
-      //     setState(() {
-      //       _selectedIndex = index;
-      //     });
-      //   },
-      // ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.car_rental),
+            label: 'Cars',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Pieces',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.grey,
+        onTap: (index) {
+          setState(() {
+            _selectedIndex = index;
+          });
+        },
+      ),
     );
   }
 }

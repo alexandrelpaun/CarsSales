@@ -1,7 +1,9 @@
 import 'package:cars_sales/models/drawer_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../screens/drawer_scree.dart';
+import '../home.dart';
+import '../screens/contact_screen.dart';
+import '../screens/login_screen.dart';
 
 // am creat un widget Drawer pe care sa in care folosesc modelul de drawer_model
 class AppDrawer extends StatelessWidget {
@@ -30,26 +32,23 @@ class AppDrawer extends StatelessWidget {
           ),
           DrawerTile(
             title: 'Home',
-            icon: Icons.person,
+            icon: Icons.home,
             onTap: () {
-              Provider.of<ChangePage>(context, listen: false)
-                  .changeTheScreen(ScreenEnum.homeScreen);
+              Navigator.pushNamed(context, Home.id);
             },
           ),
           DrawerTile(
             title: 'Login',
             icon: Icons.person,
             onTap: () {
-              Provider.of<ChangePage>(context, listen: false)
-                  .changeTheScreen(ScreenEnum.loginScreen);
+              Navigator.pushNamed(context, Login.id);
             },
           ),
           DrawerTile(
             title: 'Contact',
-            icon: Icons.person,
+            icon: Icons.contact_mail,
             onTap: () {
-              Provider.of<ChangePage>(context, listen: false)
-                  .changeTheScreen(ScreenEnum.contactScreen);
+              Navigator.pushNamed(context, Contact.id);
             },
           ),
         ],
