@@ -4,31 +4,32 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../cars/individual_car.dart';
+import '../parts/individual_part.dart';
 
-class CardWidget extends StatefulWidget {
-  CardWidget(
+class PartCardWidget extends StatefulWidget {
+  PartCardWidget(
       {this.categories,
       this.id,
       this.index,
-      this.titleCars,
-      this.priceCars,
-      this.descriptionCars,
-      required this.imageCars});
+      this.titlePart,
+      this.pricePart,
+      this.descriptionPart,
+      required this.imagePart});
 
   int? id;
   int? index;
-  String? titleCars;
-  String? descriptionCars;
-  String? priceCars;
+  String? titlePart;
+  String? descriptionPart;
+  String? pricePart;
   String? categories;
 
-  Image? imageCars;
+  Image? imagePart;
 
   @override
-  State<CardWidget> createState() => _CardWidgetState();
+  State<PartCardWidget> createState() => _PartCardWidgetState();
 }
 
-class _CardWidgetState extends State<CardWidget> {
+class _PartCardWidgetState extends State<PartCardWidget> {
   late final String likedKey;
   bool liked = false;
   late SharedPreferences prefs;
@@ -60,12 +61,12 @@ class _CardWidgetState extends State<CardWidget> {
       child: Card(
         elevation: 5,
         child: ListTile(
-          leading: widget.imageCars,
+          leading: widget.imagePart,
           title: Text(
-            widget.priceCars ?? '',
+            widget.pricePart ?? '',
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
-          subtitle: Text(widget.titleCars ?? ''),
+          subtitle: Text(widget.titlePart ?? ''),
           trailing: IconButton(
             onPressed: () {
               setState(() {
@@ -83,10 +84,10 @@ class _CardWidgetState extends State<CardWidget> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => IndividualCar(
-                  imageCars: widget.imageCars,
-                  titleCars: widget.titleCars,
-                  descriptionCars: widget.descriptionCars,
+                builder: (context) => IndividualPart(
+                  imagePart: widget.imagePart,
+                  titlePart: widget.titlePart,
+                  descriptionPart: widget.descriptionPart,
                 ),
               ),
             );

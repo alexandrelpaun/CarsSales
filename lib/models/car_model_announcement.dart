@@ -1,4 +1,4 @@
-class AnnouncementModel {
+class CarAnnouncementModel {
   int? id;
   String? name;
   String? description;
@@ -6,7 +6,7 @@ class AnnouncementModel {
   String? categories;
   String? price;
 
-  AnnouncementModel({
+  CarAnnouncementModel({
     this.id,
     this.name,
     this.description,
@@ -15,8 +15,8 @@ class AnnouncementModel {
     this.price,
   });
 
-  factory AnnouncementModel.fromJson(Map<String, dynamic> json) {
-    return AnnouncementModel(
+  factory CarAnnouncementModel.fromJson(Map<String, dynamic> json) {
+    return CarAnnouncementModel(
       id: json['id'] as int,
       name: json['name'] as String,
       description: json['description'] as String,
@@ -27,7 +27,7 @@ class AnnouncementModel {
               : null)
           : null,
       price: json['price'] as String,
-      // categories: json['categories'][2]["cars"] as String,
+      // categories: json['categories'][0]["id"] as String,
     );
   }
 }

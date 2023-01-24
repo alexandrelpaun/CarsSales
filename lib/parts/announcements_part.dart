@@ -5,21 +5,22 @@ import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-import 'cars.dart';
+import '../models/part_model_announcement.dart';
+import 'part.dart';
 
 // 1. Am convertit Stateless in StateFull ca sa pot schimba starea widgetului cu setState
-class AnnouncementsCars extends StatefulWidget {
-  const AnnouncementsCars({super.key});
+class AnnouncementsPart extends StatefulWidget {
+  const AnnouncementsPart({super.key});
 
   @override
-  State<AnnouncementsCars> createState() => _AnnouncementsCarsState();
+  State<AnnouncementsPart> createState() => _AnnouncementsCarsState();
 }
 
-class _AnnouncementsCarsState extends State<AnnouncementsCars> {
+class _AnnouncementsCarsState extends State<AnnouncementsPart> {
   // 2. isLoading are ca scop sa marcheze ca aplicatia este in loading la primul request (atunci cand se incarca)
   bool isLoading = false;
   // 3. O lista de anunturi pentru a fi trimisa catre clasa Card
-  List<CarAnnouncementModel> announcements = [];
+  List<PartAnnouncementModel> announcementsPart = [];
 
   @override
   void initState() {
@@ -42,15 +43,15 @@ class _AnnouncementsCarsState extends State<AnnouncementsCars> {
               // 11. Cand lista a fost trasa in jos, faceam un call nou API si incarcam raspunsul intr-o variabila locala apiResult
               // 12. in tot timpul apelului API, loader-ul de la Refreshindicator va fi afisat
               onRefresh: () async {
-                List<CarAnnouncementModel> apiResult =
-                    await fetchCarAnnouncementModel();
+                List<PartAnnouncementModel> apiResult =
+                    await fetchPartAnnouncementModel();
                 // 13. Dupa finalizarea call API, incarcam noul raspuns API in lista proprietatea a clasei noastre
                 setState(() {
-                  announcements = apiResult;
+                  announcementsPart = apiResult;
                 });
               },
-              child: Cars(
-                announcement: announcements,
+              child: Part(
+                announcementPart: announcementsPart,
               ),
             ),
     );
@@ -63,16 +64,16 @@ class _AnnouncementsCarsState extends State<AnnouncementsCars> {
     });
 
     // 6. Intr-o variabila numita apiResult stocam raspunsul din API
-    List<CarAnnouncementModel> apiResult = await fetchCarAnnouncementModel();
+    List<PartAnnouncementModel> apiResult = await fetchPartAnnouncementModel();
 
     // 7. Dupa ce s-a terminat request-ul catre api marcam isLoading ca fiind false si incarcam datele in proprietatea clasei 'announcement'
     setState(() {
       isLoading = false;
-      announcements = apiResult;
+      announcementsPart = apiResult;
     });
   }
 
-  Future<List<CarAnnouncementModel>> fetchCarAnnouncementModel() async {
+  Future<List<PartAnnouncementModel>> fetchPartAnnouncementModel() async {
     String user = dotenv.get('username', fallback: '');
     String pass = dotenv.get('password', fallback: '');
 
@@ -88,14 +89,14 @@ class _AnnouncementsCarsState extends State<AnnouncementsCars> {
 
     print(response.statusCode);
 
-    return parseCarAnnouncementModel(response.body);
+    return parsePartAnnouncementModel(response.body);
   }
 
-  List<CarAnnouncementModel> parseCarAnnouncementModel(String responseBody) {
+  List<PartAnnouncementModel> parsePartAnnouncementModel(String responseBody) {
     final parsed = jsonDecode(responseBody);
     return parsed
-        .map<CarAnnouncementModel>(
-            (json) => CarAnnouncementModel.fromJson(json))
+        .map<PartAnnouncementModel>(
+            (json) => PartAnnouncementModel.fromJson(json))
         .toList();
   }
 }

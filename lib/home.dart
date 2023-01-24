@@ -1,5 +1,5 @@
 import 'dart:ui';
-import 'package:cars_sales/models/model_announcement.dart';
+import 'package:cars_sales/models/car_model_announcement.dart';
 import 'package:cars_sales/widgets/app_drawer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cars_sales/screens/contact_screen.dart';
@@ -8,6 +8,7 @@ import 'package:cars_sales/screens/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:email_validator/email_validator.dart';
 import 'cars/announcements_cars.dart';
+import 'parts/announcements_part.dart';
 import 'screens/register_screen.dart';
 
 class Home extends StatefulWidget {
@@ -25,7 +26,7 @@ class _HomeState extends State<Home> {
 
   static final List<Widget> _pages = <Widget>[
     AnnouncementsCars(),
-    Text('Item2'),
+    AnnouncementsPart(),
   ];
 
   @override
@@ -33,7 +34,7 @@ class _HomeState extends State<Home> {
     var user = _auth.currentUser;
 
     return Scaffold(
-      drawer: const AppDrawer(),
+      drawer: AppDrawer(),
       appBar: AppBar(
         backgroundColor: Colors.grey,
         actions: [
@@ -73,7 +74,7 @@ class _HomeState extends State<Home> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
-            label: 'Pieces',
+            label: 'Parts',
           ),
         ],
         currentIndex: _selectedIndex,

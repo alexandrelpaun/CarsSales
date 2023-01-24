@@ -1,5 +1,5 @@
-import 'package:cars_sales/models/model_announcement.dart';
-import 'package:cars_sales/widgets/card_widget.dart';
+import 'package:cars_sales/models/car_model_announcement.dart';
+import 'package:cars_sales/widgets/car_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:html/parser.dart';
 
@@ -7,13 +7,13 @@ class Cars extends StatefulWidget {
   @override
   State<Cars> createState() => _CarsState();
 
-  List<AnnouncementModel> announcement = [];
+  List<CarAnnouncementModel> announcement = [];
 
   Cars({required this.announcement});
 }
 
 class _CarsState extends State<Cars> {
-  late Future<AnnouncementModel> futureAnunt;
+  late Future<CarAnnouncementModel> futureAnunt;
 
   String _parseHtmlString(String htmlString) {
     final document = parse(htmlString);
@@ -32,7 +32,7 @@ class _CarsState extends State<Cars> {
           itemBuilder: (context, index) {
             print(index);
 
-            return CardWidget(
+            return CarCardWidget(
               index: index,
               // categories: widget.announcement[30].categories ?? '',
               id: widget.announcement[index].id,

@@ -2,6 +2,7 @@ import 'package:cars_sales/cars/announcements_cars.dart';
 import 'package:cars_sales/cars/individual_car.dart';
 import 'package:cars_sales/home.dart';
 import 'package:cars_sales/screens/contact_screen.dart';
+import 'package:cars_sales/screens/forgot_password_screen.dart';
 import 'package:cars_sales/screens/login_screen.dart';
 import 'package:cars_sales/screens/order_formular.dart';
 import 'package:cars_sales/screens/register_screen.dart';
@@ -34,7 +35,7 @@ class CarsSales extends StatelessWidget {
           Home.id: (context) => const Home(),
           Login.id: (context) => const Login(),
           '/register': (context) => Register(),
-          '/forgotPass': (context) => AnnouncementsCars(),
+          '/forgotPass': (context) => ForgotPassword(),
           Contact.id: (context) => const Contact(),
           '/orderFormular': (context) => OrderFormular(),
           '/individualCar': (context) => IndividualCar(),
