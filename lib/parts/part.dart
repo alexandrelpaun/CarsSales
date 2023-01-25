@@ -37,7 +37,6 @@ class _CarsState extends State<Part> {
 
             return PartCardWidget(
               index: index,
-              // categories: widget.announcement[30].categories ?? '',
               id: widget.announcementPart[index].id,
               pricePart: widget.announcementPart[index].price,
               titlePart: (widget.announcementPart[index].name ?? ''),

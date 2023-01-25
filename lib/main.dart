@@ -37,7 +37,7 @@ class CarsSales extends StatelessWidget {
           '/register': (context) => Register(),
           '/forgotPass': (context) => ForgotPassword(),
           Contact.id: (context) => const Contact(),
-          '/orderFormular': (context) => OrderFormular(),
+          OrderFormular.id: (context) => OrderFormular(),
           '/individualCar': (context) => IndividualCar(),
         });
   }

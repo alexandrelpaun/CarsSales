@@ -61,11 +61,14 @@ class _CarCardWidgetState extends State<CarCardWidget> {
         elevation: 5,
         child: ListTile(
           leading: widget.imageCars,
-          title: Text(
+          title: Text(widget.titleCars ?? ''),
+          subtitle: Text(
             widget.priceCars ?? '',
-            style: TextStyle(fontWeight: FontWeight.bold),
+            style: TextStyle(
+              color: Colors.red,
+              fontWeight: FontWeight.bold,
+            ),
           ),
-          subtitle: Text(widget.titleCars ?? ''),
           trailing: IconButton(
             onPressed: () {
               setState(() {

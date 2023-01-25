@@ -8,8 +8,7 @@ import '../parts/individual_part.dart';
 
 class PartCardWidget extends StatefulWidget {
   PartCardWidget(
-      {this.categories,
-      this.id,
+      {this.id,
       this.index,
       this.titlePart,
       this.pricePart,
@@ -21,8 +20,6 @@ class PartCardWidget extends StatefulWidget {
   String? titlePart;
   String? descriptionPart;
   String? pricePart;
-  String? categories;
-
   Image? imagePart;
 
   @override
@@ -62,11 +59,14 @@ class _PartCardWidgetState extends State<PartCardWidget> {
         elevation: 5,
         child: ListTile(
           leading: widget.imagePart,
-          title: Text(
-            widget.pricePart ?? '',
-            style: TextStyle(fontWeight: FontWeight.bold),
+          title: Text(widget.titlePart ?? ''),
+          subtitle: Text(
+            '${widget.pricePart} ${'EUR'}',
+            style: TextStyle(
+              color: Colors.red,
+              fontWeight: FontWeight.bold,
+            ),
           ),
-          subtitle: Text(widget.titlePart ?? ''),
           trailing: IconButton(
             onPressed: () {
               setState(() {

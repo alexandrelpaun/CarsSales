@@ -1,17 +1,21 @@
-import 'package:cars_sales/models/model_contact.dart';
+import 'package:cars_sales/models/contact_model.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import '../cars/announcements_cars.dart';
 
 Future<http.Response> sendEmailOrder(ContactModel mesaj) async {
+  String Key = dotenv.get('MailChimpKey', fallback: '');
+  print(Key);
+
   final response = await http.post(
       Uri.parse('https://api.sendgrid.com/v3/mail/send'),
       headers: <String, String>{
         'Content-Type': 'application/json',
         //TODO Add key to gitignore
 
-        // 'Authorization': 'Bearer $Keys.SENDGRID_API_KEY'
+        'Authorization': Key
       },
       body:
           '{"personalizations": [{"to": [{"email": "${mesaj.email}"}]}],"from": {"name": "${mesaj.name}"},"subject": "Sending with SendGrid is Fun","content": [{"type": "text/plain", "value": "and easy to do anywhere, even with cURL"}]}');
@@ -22,6 +26,7 @@ Future<http.Response> sendEmailOrder(ContactModel mesaj) async {
 }
 
 class OrderFormular extends StatefulWidget {
+  static String id = 'order_formular';
   const OrderFormular({super.key});
 
   @override

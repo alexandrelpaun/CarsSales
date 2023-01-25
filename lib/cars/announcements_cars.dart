@@ -79,12 +79,16 @@ class _AnnouncementsCarsState extends State<AnnouncementsCars> {
     String basicAuth = 'Basic ' + base64.encode(utf8.encode('$user:$pass'));
     print(basicAuth);
 
-    final response = await http.get(
-        Uri.parse('https://www.samsareala.ro/wp-json/wc/v3/products'),
-        headers: <String, String>{
-          'Content-Type': 'application/json',
-          'authorization': basicAuth,
-        });
+    final queryParameters = {
+      'category': '30',
+    };
+    final uri = Uri.https(
+        'www.samsareala.ro', '/wp-json/wc/v3/products', queryParameters);
+
+    final response = await http.get(uri, headers: <String, String>{
+      'Content-Type': 'application/json',
+      'authorization': basicAuth,
+    });
 
     print(response.statusCode);
 

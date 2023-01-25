@@ -1,5 +1,5 @@
 import 'package:cars_sales/home.dart';
-import 'package:cars_sales/models/model_contact.dart';
+import 'package:cars_sales/models/contact_model.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
