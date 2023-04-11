@@ -3,7 +3,7 @@ import 'package:cars_sales/models/car_model_announcement.dart';
 import 'package:cars_sales/widgets/app_drawer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cars_sales/screens/contact_screen.dart';
-import 'package:cars_sales/screens/login_screen.dart';
+import 'package:cars_sales/login/login_screen.dart';
 import 'package:cars_sales/screens/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:email_validator/email_validator.dart';
@@ -25,8 +25,8 @@ class _HomeState extends State<Home> {
   final _auth = FirebaseAuth.instance;
 
   static final List<Widget> _pages = <Widget>[
-    AnnouncementsCars(),
-    AnnouncementsPart(),
+    const AnnouncementsCars(),
+    const AnnouncementsPart(),
   ];
 
   @override
@@ -34,16 +34,16 @@ class _HomeState extends State<Home> {
     var user = _auth.currentUser;
 
     return Scaffold(
-      drawer: AppDrawer(),
+      drawer: const AppDrawer(),
       appBar: AppBar(
         backgroundColor: Colors.grey,
         actions: [
           TextButton.icon(
             onPressed: () {},
-            icon: Icon(Icons.person, color: Colors.white),
+            icon: const Icon(Icons.person, color: Colors.white),
             label: Text(
               '${user?.email}',
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.white,
               ),
             ),
@@ -55,11 +55,11 @@ class _HomeState extends State<Home> {
               Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => Login(),
+                    builder: (context) => const LoginScreen(),
                   ),
                   (route) => false);
             },
-            icon: Icon(Icons.logout, color: Colors.white),
+            icon: const Icon(Icons.logout, color: Colors.white),
           ),
         ],
       ),
@@ -68,11 +68,11 @@ class _HomeState extends State<Home> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.car_rental),
             label: 'Cars',
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.settings),
             label: 'Parts',
           ),

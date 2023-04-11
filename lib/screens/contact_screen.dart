@@ -23,7 +23,7 @@ Future<http.Response> sendEmail(ContactModel mesaj) async {
 
 class Contact extends StatefulWidget {
   const Contact({super.key});
-  static String id = 'Contact';
+  static String id = 'contact';
 
   @override
   State<Contact> createState() => _ContactState();

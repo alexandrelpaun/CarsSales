@@ -1,5 +1,5 @@
 import 'package:cars_sales/home.dart';
-import 'package:cars_sales/screens/login_screen.dart';
+import 'package:cars_sales/login/login_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -8,7 +8,8 @@ import '../parts/individual_part.dart';
 
 class PartCardWidget extends StatefulWidget {
   PartCardWidget(
-      {this.id,
+      {super.key,
+      this.id,
       this.index,
       this.titlePart,
       this.pricePart,
@@ -62,7 +63,7 @@ class _PartCardWidgetState extends State<PartCardWidget> {
           title: Text(widget.titlePart ?? ''),
           subtitle: Text(
             '${widget.pricePart} ${'EUR'}',
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.red,
               fontWeight: FontWeight.bold,
             ),

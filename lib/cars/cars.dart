@@ -1,5 +1,6 @@
 import 'package:cars_sales/models/car_model_announcement.dart';
 import 'package:cars_sales/widgets/car_card_widget.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:html/parser.dart';
 
@@ -9,7 +10,7 @@ class Cars extends StatefulWidget {
 
   List<CarAnnouncementModel> announcement = [];
 
-  Cars({required this.announcement});
+  Cars({super.key, required this.announcement});
 }
 
 class _CarsState extends State<Cars> {
@@ -27,10 +28,12 @@ class _CarsState extends State<Cars> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView.builder(
-          padding: EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(8.0),
           itemCount: widget.announcement.length,
           itemBuilder: (context, index) {
-            print(index);
+            if (kDebugMode) {
+              print(index);
+            }
 
             return CarCardWidget(
               index: index,

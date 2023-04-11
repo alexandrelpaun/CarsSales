@@ -1,10 +1,12 @@
-import 'package:cars_sales/screens/login_screen.dart';
+import 'package:cars_sales/login/login_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:email_validator/email_validator.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});
+  static String id = 'register';
 
   @override
   State<Register> createState() => _RegisterState();
@@ -29,7 +31,7 @@ class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 215, 219, 200),
+      backgroundColor: const Color.fromARGB(255, 215, 219, 200),
       appBar: AppBar(
         backgroundColor: Colors.grey,
         title: const Center(
@@ -118,23 +120,33 @@ class _RegisterState extends State<Register> {
                           await _auth.createUserWithEmailAndPassword(
                               email: userController.text,
                               password: passController.text);
-                      print(newUser.user!.displayName);
+                      if (kDebugMode) {
+                        print(newUser.user!.displayName);
+                      }
                       Navigator.pushAndRemoveUntil(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const Login(),
+                            builder: (context) => const LoginScreen(),
                           ),
                           (route) => false);
                     } on FirebaseAuthException catch (e) {
-                      print(e.code);
+                      if (kDebugMode) {
+                        print(e.code);
+                      }
                       if (e.code == "email-already-in-use") {
-                        print(
-                            'Thrown if there already exists an account with the given email address');
+                        if (kDebugMode) {
+                          print(
+                              'Thrown if there already exists an account with the given email address');
+                        }
                       } else if (e.code == "invalid-email") {
-                        print('Thrown if the email address is not valid.');
+                        if (kDebugMode) {
+                          print('Thrown if the email address is not valid.');
+                        }
                       } else if (e.code == 'operation-not-allowed') {
-                        print(
-                            'Thrown if email/password accounts are not enabled. Enable email/password accounts in the Firebase Console, under the Auth tab.');
+                        if (kDebugMode) {
+                          print(
+                              'Thrown if email/password accounts are not enabled. Enable email/password accounts in the Firebase Console, under the Auth tab.');
+                        }
                       } else if (e.code == 'weak-password') {
                         print('weak-password');
                       }
@@ -143,7 +155,8 @@ class _RegisterState extends State<Register> {
                     }
                   }
                 },
-                child: Text('Register', style: TextStyle(color: Colors.grey)),
+                child: const Text('Register',
+                    style: TextStyle(color: Colors.grey)),
               ),
             ],
           ),

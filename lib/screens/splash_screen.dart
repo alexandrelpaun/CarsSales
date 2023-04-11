@@ -1,5 +1,4 @@
-import 'package:cars_sales/home.dart';
-import 'package:cars_sales/screens/login_screen.dart';
+import 'package:cars_sales/login/login_screen.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -18,7 +17,7 @@ class _SplashScreenState extends State<SplashScreen> {
       Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(
-            builder: (context) => Login(),
+            builder: (context) => const LoginScreen(),
           ),
           (route) => false);
     });
@@ -29,12 +28,12 @@ class _SplashScreenState extends State<SplashScreen> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
-            padding: EdgeInsets.all(80.0),
+            padding: const EdgeInsets.all(80.0),
             child: Image.asset(
               'assets/logo.jpg',
             ),
           ),
-          Text(
+          const Text(
             'Samsareala.ro',
             textAlign: TextAlign.center,
             style: TextStyle(
@@ -44,10 +43,10 @@ class _SplashScreenState extends State<SplashScreen> {
               fontSize: 60,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 15.0,
           ),
-          CircularProgressIndicator(),
+          const CircularProgressIndicator(),
         ],
       ),
     );

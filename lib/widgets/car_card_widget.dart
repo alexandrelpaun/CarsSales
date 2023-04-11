@@ -1,5 +1,5 @@
 import 'package:cars_sales/home.dart';
-import 'package:cars_sales/screens/login_screen.dart';
+import 'package:cars_sales/login/login_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -64,7 +64,7 @@ class _CarCardWidgetState extends State<CarCardWidget> {
           title: Text(widget.titleCars ?? ''),
           subtitle: Text(
             widget.priceCars ?? '',
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.red,
               fontWeight: FontWeight.bold,
             ),

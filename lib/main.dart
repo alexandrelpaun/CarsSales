@@ -1,14 +1,15 @@
-import 'package:cars_sales/cars/announcements_cars.dart';
 import 'package:cars_sales/cars/individual_car.dart';
 import 'package:cars_sales/home.dart';
+import 'package:cars_sales/login/login_screen_bloc.dart';
 import 'package:cars_sales/screens/contact_screen.dart';
 import 'package:cars_sales/screens/forgot_password_screen.dart';
-import 'package:cars_sales/screens/login_screen.dart';
+import 'package:cars_sales/login/login_screen.dart';
 import 'package:cars_sales/screens/order_formular.dart';
 import 'package:cars_sales/screens/register_screen.dart';
 import 'package:cars_sales/screens/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 void main() async {
@@ -17,7 +18,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-  runApp(CarsSales());
+  runApp(const CarsSales());
 }
 
 class CarsSales extends StatelessWidget {
@@ -25,20 +26,27 @@ class CarsSales extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => LoginScreenBloc(),
+        ),
+      ],
+      child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Samsareala.ro',
-        initialRoute: Home.id,
+        initialRoute: '/login',
         routes: {
-          SplashScreen.id: (context) =>
-              const SplashScreen(), // Am adaugat in clasa SplashScreen variabial statica de tip String id,
-          Home.id: (context) => const Home(),
-          Login.id: (context) => const Login(),
-          '/register': (context) => Register(),
-          '/forgotPass': (context) => ForgotPassword(),
-          Contact.id: (context) => const Contact(),
-          OrderFormular.id: (context) => OrderFormular(),
+          '/splash_screen': (context) => const SplashScreen(),
+          '/home': (context) => const Home(),
+          '/login': (context) => const LoginScreen(),
+          '/register': (context) => const Register(),
+          '/forgotPass': (context) => const ForgotPassword(),
+          '/contact': (context) => const Contact(),
+          '/order_formular': (context) => const OrderFormular(),
           '/individualCar': (context) => IndividualCar(),
-        });
+        },
+      ),
+    );
   }
 }

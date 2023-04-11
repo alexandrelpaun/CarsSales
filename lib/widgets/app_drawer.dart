@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../home.dart';
 import '../screens/contact_screen.dart';
-import '../screens/login_screen.dart';
+import '../login/login_screen.dart';
 
 // am creat un widget Drawer pe care sa in care folosesc modelul de drawer_model
 class AppDrawer extends StatefulWidget {
-  AppDrawer({super.key});
+  const AppDrawer({super.key});
 
   @override
   State<AppDrawer> createState() => _AppDrawerState();
@@ -34,7 +34,8 @@ class _AppDrawerState extends State<AppDrawer> {
               child: Center(
                 child: Text(
                   '${user?.email}',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  style: const TextStyle(
+                      fontSize: 20, fontWeight: FontWeight.bold),
                 ),
               ),
             ),

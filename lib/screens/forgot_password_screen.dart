@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cars_sales/screens/login_screen.dart';
+import 'package:cars_sales/login/login_screen.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -24,22 +24,22 @@ class _ForgotPasswordState extends State<ForgotPassword> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 215, 219, 200),
+      backgroundColor: const Color.fromARGB(255, 215, 219, 200),
       appBar: AppBar(
         backgroundColor: Colors.grey,
         centerTitle: true,
-        title: Text('Reset Password'),
+        title: const Text('Reset Password'),
       ),
       body: Form(
         key: _formKey,
         child: Padding(
-          padding: EdgeInsets.all(20.0),
+          padding: const EdgeInsets.all(20.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('Please insert your e-mail adrress!'),
-              SizedBox(
+              const Text('Please insert your e-mail adrress!'),
+              const SizedBox(
                 height: 15.0,
               ),
               TextFormField(
@@ -63,7 +63,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   }
                 },
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15.0,
               ),
               ElevatedButton(
@@ -78,7 +78,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       Navigator.pushAndRemoveUntil(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => Login(),
+                            builder: (context) => const LoginScreen(),
                           ),
                           (route) => false);
                     } on FirebaseAuthException catch (e) {
@@ -86,7 +86,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     }
                   }
                 },
-                child: Text('Reset your password!'),
+                child: const Text('Reset your password!'),
               ),
             ],
           ),
