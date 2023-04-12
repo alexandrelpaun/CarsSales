@@ -3,12 +3,12 @@ import 'package:cars_sales/models/car_model_announcement.dart';
 import 'package:cars_sales/widgets/app_drawer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cars_sales/screens/contact_screen.dart';
-import 'package:cars_sales/login/login_screen.dart';
 import 'package:cars_sales/screens/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:email_validator/email_validator.dart';
 import 'cars/announcements_cars.dart';
 import 'parts/announcements_part.dart';
+import 'screens/login/login_screen.dart';
 import 'screens/register_screen.dart';
 
 class Home extends StatefulWidget {
@@ -67,12 +67,12 @@ class _HomeState extends State<Home> {
         child: _pages.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: <BottomNavigationBarItem>[
-          const BottomNavigationBarItem(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
             icon: Icon(Icons.car_rental),
             label: 'Cars',
           ),
-          const BottomNavigationBarItem(
+          BottomNavigationBarItem(
             icon: Icon(Icons.settings),
             label: 'Parts',
           ),

@@ -1,8 +1,9 @@
-import 'package:cars_sales/login/login_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:email_validator/email_validator.dart';
+
+import 'login/login_screen.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});

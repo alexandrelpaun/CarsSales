@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../home.dart';
 import '../screens/contact_screen.dart';
-import '../login/login_screen.dart';
 
 // am creat un widget Drawer pe care sa in care folosesc modelul de drawer_model
 class AppDrawer extends StatefulWidget {
